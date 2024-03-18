@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  cube:
+    image: cubejs/cube:latest
+    ports:
+      - 4000:4000
+    environment:
+      - CUBEJS_DEV_MODE=true
+      - CUBEJS_DB_HOST=cubeDataSource
+      - CUBEJS_DB_PORT=15432
+      - CUBEJS_DB_NAME=cube
+      - CUBEJS_DB_USER=postgres
+      - CUBEJS_DB_PASS=password
+      - CUBEJS_DB_TYPE=postgres
+      - CUBEJS_EXTERNAL_DEFAULT=true
+      - CUBEJS_SCHEDULED_REFRESH_DEFAULT=true
+    volumes:
+      - ../schemas/:/cube/conf/schema/
+
+  cubeDataSource:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - 15434:15432
