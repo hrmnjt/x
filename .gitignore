@@ -1,9 +1,5 @@
-
+# gitignore
 
 **/.venv
 **/.ipynb_checkpoints
 **/.python-version
-
-# cube specific
-
-**/.cubestore
