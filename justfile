@@ -1,6 +1,11 @@
 # Default command to show available commands
 default:
-    @just --list
+    @echo "just what?"
+    @echo "----------"
+    @echo "query  FILE_PATH PROFILE=default_profile      # Query a file (auto-detect type based on extension)"
+    @echo "queryc FILE_PATH PROFILE=default_profile      # Query CSV file"
+    @echo "queryp FILE_PATH PROFILE=default_profile      # Query Parquet file"
+
 
 # Set default values
 default_profile := "grid2-prod"
@@ -43,11 +48,3 @@ querylocalc FILE_PATH:
 # Query a local Parquet file
 querylocalp FILE_PATH:
     python {{script_name}} "{{FILE_PATH}}" --type parquet
-
-# List available AWS profiles
-list-profiles:
-    aws configure list-profiles
-
-# Show script help
-help:
-    python {{script_name}} --help
