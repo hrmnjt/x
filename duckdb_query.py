@@ -79,7 +79,7 @@ def create_duckdb_init_script(file_path: str, file_type: str, profile_name: Opti
 
     script.extend([
         f"CREATE OR REPLACE TABLE data AS SELECT * FROM {read_function}('{file_path}');",
-        ".mode box",
+        ".mode duckbox",
         ".echo on",
         "PRAGMA table_info('data');"
     ])
