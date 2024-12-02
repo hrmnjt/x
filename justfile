@@ -25,3 +25,11 @@ queryc FILE_PATH PROFILE=default_aws_profile:
 # Query a Parquet file
 queryp FILE_PATH PROFILE=default_aws_profile:
     python duckdb_query.py "{{FILE_PATH}}" --type parquet --profile "{{PROFILE}}"
+
+# npq = native (duckdb cli) parquet query
+npq FILE_PATH PROFILE=default_aws_profile:
+    python duckdb_query.py "{{FILE_PATH}}" --type parquet --profile "{{PROFILE}}" --ui cli
+
+# hpq = harlequin parquet query
+hpq FILE_PATH PROFILE=default_aws_profile:
+    python duckdb_query.py "{{FILE_PATH}}" --type parquet --profile "{{PROFILE}}" --ui harlequin
